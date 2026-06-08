@@ -1273,15 +1273,6 @@ int main(int argc, char** argv) {
     g_cameras.push_back(createTopCamera());
     g_cameras.push_back(createSideCamera());
 
-    printf("========================================================\n");
-    printf("  Editor Grafico 3D estilo Blender - Lab 7\n");
-    printf("========================================================\n\n");
-    printf("Click izq = Seleccionar | Click der = Menu\n");
-    printf("Arrastrar = Trackball | Shift/Mid = Pan | Rueda = Zoom\n");
-    printf("T/R/S = Modo | D = Duplicar | SUPR = Borrar | W = Wire\n");
-    printf("[/] = FOV | ,/. = Near | ;/' = Far | C = Camara\n");
-    printf("F5 = Guardar | F6 = Cargar | H = Ayuda | ESC = Salir\n\n");
-
     addObject(CUBO);
     if (Object3D* o = findObject(g_selectedId)) { o->pos[0] = -3.0f; o->pos[1] = 0.8f; o->color[0]=0.9f; o->color[1]=0.35f; o->color[2]=0.35f; }
     addObject(ESFERA);
