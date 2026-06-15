@@ -5,17 +5,23 @@ CXX      = g++
 CXXFLAGS = -Wall -std=c++11
 LIBS     = -lGL -lGLU -lglut
 TARGET   = editor3d
-SRC      = main.cpp
+
+SRCDIR   = src
+SRC      = $(wildcard $(SRCDIR)/*.cpp)
+OBJ      = $(SRC:.cpp=.o)
 
 all: $(TARGET)
 
-$(TARGET): $(SRC)
-	$(CXX) $(CXXFLAGS) -o $@ $< $(LIBS)
+$(TARGET): $(OBJ) main.cpp
+	$(CXX) $(CXXFLAGS) -o $@ main.cpp $(OBJ) $(LIBS)
+
+$(SRCDIR)/%.o: $(SRCDIR)/%.cpp
+	$(CXX) $(CXXFLAGS) -c -o $@ $<
 
 run: $(TARGET)
 	./$(TARGET)
 
 clean:
-	rm -f $(TARGET)
+	rm -f $(TARGET) $(SRCDIR)/*.o
 
 .PHONY: all run clean
